@@ -39,12 +39,13 @@ public class PryLoteria {
         }
         JuegoEnProceso h = new JuegoEnProceso(juego);
         
-        c1.setNombre("vicho");
-        c2.setNombre("gordo");
-        c3.setNombre("hola");
-        c4.setNombre("null");
-        c5.setNombre("yanose");
+        c1.setNombre("1");
+        c2.setNombre("2");
+        c3.setNombre("3");
+        c4.setNombre("4");
+        c5.setNombre("5");
         
+        leer.next();
         h.start();
         
     }

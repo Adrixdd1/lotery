@@ -4,17 +4,49 @@
  */
 package com.mycompany.pryloteria;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author victo
  */
 public class FrmLoteria extends javax.swing.JFrame {
-
+    private JuegoEnProceso h;
+    private JLabel[] labels;
+    private JuegoEnFrame loteria;
     /**
      * Creates new form FrmLoteria
      */
     public FrmLoteria() {
         initComponents();
+        labels= new JLabel[9];
+        labels[0]=this.jLabel1;
+        labels[1]=this.jLabel2;
+        labels[2]=this.jLabel3;
+        labels[3]=this.jLabel4;
+        labels[4]=this.jLabel5;
+        labels[5]=this.jLabel6;
+        labels[6]=this.jLabel7;
+        labels[7]=this.jLabel8;
+        labels[8]=this.jLabel9;
+        CartonTablero c1 ;
+        c1 = CartonTablero.crearTablero(Aleatorios.crearTablero());
+        CartonTablero c2 = CartonTablero.crearTablero(Aleatorios.crearTablero());
+        CartonTablero c3 = CartonTablero.crearTablero(Aleatorios.crearTablero());
+        CartonTablero c4 = CartonTablero.crearTablero(Aleatorios.crearTablero());
+        CartonTablero c5 = CartonTablero.crearTablero(Aleatorios.crearTablero());
+        CartonTablero[] juego;
+        juego=new CartonTablero[5];
+        juego[0]=c1;
+        juego[1]=c2;
+        juego[2]=c3;
+        juego[3]=c4;
+        juego[4]=c5;
+        int jugador= Integer.parseInt(JOptionPane.showInputDialog("Hola, selecciona tu tablero"));
+        loteria= new JuegoEnFrame(juego,labels,jugador,this.lblCartaCantada);
+        
+        
     }
 
     /**
@@ -26,21 +58,72 @@ public class FrmLoteria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblCartaCantada = new javax.swing.JLabel();
+        btnIniciar = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("carta5");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
+
+        jLabel2.setText("carta3");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
+
+        jLabel3.setText("carta4");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+
+        jLabel4.setText("carta1");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        jLabel5.setText("carta6");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
+
+        jLabel6.setText("carta7");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+
+        jLabel7.setText("carta8");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
+
+        jLabel8.setText("carta9");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, -1, -1));
+
+        jLabel9.setText("carta2");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 260));
+
+        lblCartaCantada.setText("carta");
+        getContentPane().add(lblCartaCantada, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 90, 50));
+
+        btnIniciar.setText("iniciar");
+        btnIniciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIniciarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
+        loteria.start();
+        this.btnIniciar.setEnabled(false);
+        
+    }//GEN-LAST:event_btnIniciarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +161,17 @@ public class FrmLoteria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIniciar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCartaCantada;
     // End of variables declaration//GEN-END:variables
 }
